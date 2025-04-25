@@ -23,7 +23,10 @@ const addressSchema =new mongoose.Schema({
     status:{
         type:Boolean,
         default:true
-    }
+    },user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "user",    
+      },
     
 },{
     timestamps:true

@@ -56,21 +56,26 @@ const AddToCartButton = ({ data }) => {
 
 
 
-    const IncreaseQty = (e) => {
+    const IncreaseQty =async (e) => {
         e.preventDefault()
         e.stopPropagation()
-        handleUpdateQty(cartItmeDetails._id,qty+1)
-
+        const response=await handleUpdateQty(cartItmeDetails._id,qty+1)
+           if(response.success){
+            toast.success('Item added')
+           }
     }
 
-    const DecreaseQty = (e) => {
+    const DecreaseQty =async (e) => {
         e.preventDefault()
         e.stopPropagation()
         if(qty===1){
             deleteCartItem(cartItmeDetails._id)
         }
         else{
-            handleUpdateQty(cartItmeDetails._id,qty-1)
+           const response = await handleUpdateQty(cartItmeDetails._id,qty-1)
+           if(response.success){
+            toast.success('Item remove')
+           }
         }
 
     }

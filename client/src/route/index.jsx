@@ -20,24 +20,11 @@ import AdminPermission from "../pages/AdminPermission";
 import ProductListPage from "../pages/ProductListPage";
 import ProductDisplayPage from "../components/ProductDisplayPage";
 import MobileCart from "../components/MobileCart";
-// import App from "../App";
-// import Home from "../Pages/Home";
-// import Login from "../Pages/Login";
-// import Register from "../Pages/Register";
-// import ForgotPassword from "../Pages/ForgotPassword";
-// import OtpVerification from "../Pages/OtpVerification";
-// // import Profile from "../Components/Profile";
-// // import Dashboard from "../Pages/Dashboard";
-// // import MyOrder from "../Components/MyOrder";
-// // import Address from "../Components/Address";
-// // import AdminHome from "../admin/AdminHome.";
-// // import Categories from "../admin/Categories";
-// // import Subcategories from "../admin/Subcategories";
-// // import UploadProduct from "../admin/UploadProduct";
-// // import Product from "../admin/Product";
-// // import ShowSubCategories from "../admin/ShowSubCategory";
-// // import ShowCategories from "../admin/ShowCategories";
-// // import ViewProduct from "../Pages/ViewProduct";
+import CheckOutPage from "../components/CheckOutPage"
+import Success from "../components/Success"
+
+
+
 
 
 const routerpage = createBrowserRouter([
@@ -119,55 +106,25 @@ const routerpage = createBrowserRouter([
                         element:<ProductListPage/>
                     }
                 ]
-            },{
+            },
+            {
                 path:"product/:product",
                 element:<ProductDisplayPage/>
-            },{
+            },
+            {
                 path:"cart",
                 element:<MobileCart/>
+            },
+            {
+                path: "CheckOutPage",
+                element: <CheckOutPage />
+            },
+            {
+                path: "order-confirmation",
+                element: <Success/>
             }
-            //             // {
-            //             //    path:"/categories/:categoryId",
-            //             //     element:<ShowSubCategories/>
-
-            //             // },
-            //             // {
-            //             //     path:"/categories",
-            //             //     element:<ShowCategories/>
-
-            //             // },
-            //             // {
-            //             //     path:"/categories/:categoryId/subcategories/:subcategoryId",
-            //             //     element:<ShowSubCategories/>
-            //             // },
-            //             // {
-            //             //     path:"/product/:id",
-            //             //     element:<ViewProduct/>
-            //             // },
         ],
-        //     },
-
-        //     // {
-        //     //     path:"admin",
-        //     //     element:<AdminHome/>,
-        //     //     children:[
-        //     //     {
-        //     //         path:"categories",
-        //     //         element:<Categories/>
-        //     //     },
-        //     //     {
-        //     //         path:"Subcategories",
-        //     //         element:<Subcategories/>
-        //     //     },
-        //     //     {
-        //     //         path:"upload-product",
-        //     //         element:<UploadProduct/>
-        //     //     },
-        //     //     {
-        //     //         path:"products",
-        //     //         element:<Product/>
-        //     //     },
-        //     //     ]
+        
     }
 ]);
 

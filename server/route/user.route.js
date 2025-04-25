@@ -13,6 +13,12 @@ import { AddcategorieController, DeleteCategorie, getcategories, UpdateCategoryC
 import { addSubcategories, CategoryShowById,  EditSubCategorie, getSubcategories } from "../controllers/subcategories.controllers.js";
 import { createProductController, getProductByCategoryAndSubCategory, getProductDetails, GetProducts,getProductsBySubcategory, searchProduct } from "../controllers/Product.controller.js";
 import { addToCart, deleteCartItmeQtyController, getCartItemContorller, updateCartItemQtyController } from "../controllers/cart.controller.js";
+import { getUserAddresses,addUserAddress } from "../controllers/Address.controller.js";
+import { CashOnDeliveryController,getUserOrdersController,createStripeSession} from "../controllers/Order.controller.js";
+
+
+
+
 
 const userouter = Router();
 
@@ -52,25 +58,22 @@ userouter.post('/create',auth,addToCart)
 userouter.get('/get-cartProduct',auth,getCartItemContorller)
 userouter.put('/update-qty',auth,updateCartItemQtyController)
 userouter.delete('/delete-cartItem',auth,deleteCartItmeQtyController)
-// userouter.post('/upload-subcategories', upload.single("image"), uploadSubcategories);
-// userouter.get('/subcategories', getSubcategories);
-// userouter.put('/update-subcategory/:id',upload.single("image"), EditSubCategorie)
-// userouter.delete('/delete-subcategory/:id',DeleteSubCategorie)
-// product
-// userouter.post('/upload-product', upload.array("images", 5),  AdminUploadProduct)
-// userouter.get('/products',GetProducts)
-// userouter.get('/product/:id',ProductById)
-// userouter.get('/categories-with-products',ShowProductWithCategory)
-// Fetch subcategories when category changes
-// userouter.get('/categories/:categoryId/subcategories',CategoryShowById)
-// userouter.get('/subcategories/:subcategoryId/products',getProductsBySubcategory)
-// userouter.get('/subcategories/:subcategoryId/products', getProductsBySubcategory);
-// cart product
-// userouter.post("/create",auth,getCartProducts)
-// userouter.get('/get',auth,getCartItomController)
-//userouter.put('/update-qty',auth,UpdateCartItemController)
-// userouter.put("/update-qty",auth, UpdateCartItemController);
-// userouter.delete('/delete-cart-item',auth,DeleteCartItemController)
+
+// address
+userouter.get("/user-addresses", auth, getUserAddresses);
+userouter.post("/add-address", auth, addUserAddress);
+
+// Order
+// userouter.post('/order/create', auth, createOrderController);
+// userouter.get('/user-orders', auth, getUserOrdersController);
+userouter.post('/order/create', auth, CashOnDeliveryController);
+userouter.get('/user-orders', auth, getUserOrdersController);
+
+// userouter.post('/razorpay', auth, createRazorpayOrder);
+// userouter.post('/verify', auth, verifyPaymentAndCreateOrder);
+userouter.post('/stripe-session', auth, createStripeSession);
+
+
 
 
 

@@ -148,7 +148,7 @@ const Header = () => {
                                         <p>₹{totalPrice}</p>
                                     </div>
                                 ) : (
-                                    <div className="text-sm text-white font-semibold">
+                                    <div className="text-sm text-white font-semibold py-2">
                                         <p>My Cart</p>
                                     </div>
                                 )

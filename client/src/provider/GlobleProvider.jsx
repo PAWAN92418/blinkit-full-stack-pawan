@@ -22,6 +22,7 @@ const GlobleProvider = ({ children }) => {
   const [totalPrice, setTotalPrice] = useState(0)
   const [totalQty, setTotalQty] = useState(0)
   const [totalDiscount, setTotalDiscount] = useState(0)
+  const user = useSelector((state)=>state.user)
 
 
   const fetchCartItems = async () => {
@@ -50,12 +51,14 @@ const GlobleProvider = ({ children }) => {
       })
       const { data: responseData } = response
       if (responseData.success) {
-        toast.success(responseData.message)
+        // toast.success(responseData.message)
         fetchCartItems()
+        return responseData
       }
 
     } catch (error) {
       AxiosTostError(error)
+      return error
     }
   }
 
@@ -77,9 +80,9 @@ const GlobleProvider = ({ children }) => {
       AxiosTostError(error)
     }
   }
-  useEffect(() => {
-    fetchCartItems();
-  }, []);
+  // useEffect(() => {
+  //   fetchCartItems();
+  // }, []);
 
   useEffect(() => {
     const qty = cartItems.reduce((preve, curr) => {
@@ -106,8 +109,19 @@ const GlobleProvider = ({ children }) => {
   }, [cartItems])
 
 
+  const handelLogOut =()=>{
+    localStorage.clear()
+    dispatch(handleAddItemCart([]))
+  }
 
-
+  useEffect(() => {
+    if (user && user._id) {
+      fetchCartItems();
+    } else {
+      handelLogOut();
+    }
+  }, [user]);
+  
   return (
     <GlobleContext.Provider value={{ fetchCartItems, handleUpdateQty, deleteCartItem, totalPrice, totalQty,notDiscountPrice,totalDiscount }}>
       {children}

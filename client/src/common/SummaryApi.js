@@ -1,4 +1,4 @@
-export const baseURL = "http://localhost:1117"
+export const baseURL = import.meta.env.VITE_API_URL
 
 // /api/user/
 const SummaryApi = {
@@ -111,7 +111,33 @@ const SummaryApi = {
     deleteQty:{
        url: "/api/user/delete-cartItem",
        method: "delete"
-   }
+   },
+   getUserAddresses:{
+    url: "/api/user/user-addresses",
+    method: "get"
+  },
+  addUserAddress:{
+    url: "/api/user/add-address",
+    method: "post"
+  },
+//   createOrder:{
+//     url: "/api/user/order/create",
+//     method: "post"
+//   },
+  getUserOrders: {
+    method: 'GET',
+    url: '/api/user/user-orders',
+  },
+CashOnDelivery:{
+    url: "/api/user/order/create",
+    method: "post"
+  },
+  stripeSession: {
+    url: '/api/user/stripe-session',
+    method: 'post'
+  },
+
+
 
 
 }

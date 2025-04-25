@@ -5,11 +5,11 @@ const orderschema=new mongoose.Schema({
         type:mongoose.Schema.ObjectId,
         ref:'User'
     },
-    orderId:{
-        type:String,
-        require:[true,"provide ordreId "],
-        unique:true
-    },
+    orderId: {
+        type: String,
+        require: [true, "provide ordreId "],
+        unique: true
+      },      
     productId:{
         type:mongoose.Schema.ObjectId,
         ref:"product"
@@ -18,6 +18,10 @@ const orderschema=new mongoose.Schema({
         name:String,
         image:Array
     },
+    qty: {
+         type: Number,
+          required: true 
+    }, 
     paymentId:{
         type:String,
         default:""
